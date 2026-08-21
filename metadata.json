@@ -1,0 +1,10 @@
+{
+  "name": "RiseGuide: Communication & Confidence Mastery",
+  "description": "Daily 15-minute bite-sized journeys, expert SEEK insight engine, interactive speech simulators with real-time feedback, and dynamic vocabulary boosters tailored to your field.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
