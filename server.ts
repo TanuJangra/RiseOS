@@ -27,11 +27,10 @@ function getAi(): GoogleGenAI {
   return aiClient;
 }
 
-// Resilient Gemini content generator with automatic fallback on 503 / high demand spikes
+// Resilient Gemini content generator with automatic fallback on 503 / 429 quota spikes
 async function generateContentWithFallback(ai: GoogleGenAI, params: any) {
   const modelsToTry = [
     params.model || 'gemini-3.7-flash',
-    'gemini-flash-latest',
     'gemini-3.1-flash-lite'
   ];
 
@@ -48,10 +47,9 @@ async function generateContentWithFallback(ai: GoogleGenAI, params: any) {
       }
     } catch (err: any) {
       lastError = err;
-      console.warn(`Attempt with ${modelName} encountered: ${err?.message || err}. Trying next fallback if available...`);
-      // Brief pause before trying fallback model
+      // If first model hit 503/429, wait briefly and try flash-lite
       if (i < modelsToTry.length - 1) {
-        await new Promise((resolve) => setTimeout(resolve, 350));
+        await new Promise((resolve) => setTimeout(resolve, 400));
       }
     }
   }
@@ -577,7 +575,7 @@ const handleDailyWorkoutGeneration = async (req: express.Request, res: express.R
     const resolvedField = customFieldTitle || field || 'Tech & Leadership';
     const resolvedDay = dayIndex || (streakDays ? streakDays + 1 : 1);
     const ai = getAi();
-    const systemPrompt = `You are the lead instructional designer for RiseGuide. Generate a complete 15-minute daily micro-workout tailored for Day ${resolvedDay} in the user's field of "${resolvedField}" focusing on "${focusArea || 'Charisma & Articulation'}".
+    const systemPrompt = `You are the lead instructional designer for RISE OS. Generate a complete 15-minute daily micro-workout tailored for Day ${resolvedDay} in the user's field of "${resolvedField}" focusing on "${focusArea || 'Charisma & Articulation'}".
 
 A 15-minute workout contains exactly 4 structured steps:
 Step 1: Word of the Day & Vocabulary Booster (3 mins) - High-value word, pronunciation, professional meaning, contextual sentence example, and a prompt for the user.

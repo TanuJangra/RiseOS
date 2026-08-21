@@ -54,7 +54,7 @@ export const NotificationCenterModal: React.FC<NotificationCenterModalProps> = (
     const granted = await requestBrowserNotificationPermission();
     setPermissionStatus(granted ? 'granted' : 'denied');
     if (granted) {
-      triggerSystemNotification('🎉 RiseGuide Notifications Activated!', {
+      triggerSystemNotification('🎉 RISE OS Notifications Activated!', {
         body: 'You will receive daily 15-minute vocabulary retention digests and speech feedback reminders.'
       });
     }

@@ -81,18 +81,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div>
                 <div className="flex items-center gap-2">
                   <span className="font-editorial-heading font-bold text-lg sm:text-2xl tracking-tight text-inherit">
-                    Rise<span className="italic font-serif text-[#C2410C] dark:text-[#FB923C]">Guide</span>
+                    RISE <span className="italic font-serif text-[#C2410C] dark:text-[#FB923C]">OS</span>
                   </span>
                   <span className={`hidden sm:inline-block px-2 py-0.5 text-[9px] uppercase font-bold tracking-[0.14em] font-mono rounded-full border ${
                     isDark 
                       ? 'bg-[#222226] text-[#22C55E] border-[#27272A]' 
                       : 'bg-[#F5F2EB] text-[#52525B] border-[#E2DDD4]'
                   }`}>
-                    Brain Vitals
+                    Speech & Vitals
                   </span>
                 </div>
                 <p className="text-[10px] sm:text-[11px] text-[#64748B] dark:text-[#A1A1AA] hidden md:block tracking-wide font-editorial-sans">
-                  Interactive E-Reader & Brain Fitness Tracker
+                  Executive Communication & Brain Fitness Operating System
                 </p>
               </div>
             </button>

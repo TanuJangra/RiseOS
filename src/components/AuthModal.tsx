@@ -114,7 +114,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </div>
             <div>
               <h2 className="font-editorial-heading font-serif font-bold text-xl text-[#18181B]">
-                Join Rise<span className="italic text-[#C2410C]">Guide</span>
+                Join RISE <span className="italic text-[#C2410C]">OS</span>
               </h2>
               <p className="text-xs text-[#64748B]">
                 Universal access for anyone via Gmail or Phone

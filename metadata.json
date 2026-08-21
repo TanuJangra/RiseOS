@@ -1,6 +1,6 @@
 {
-  "name": "RiseGuide: Communication & Confidence Mastery",
-  "description": "Daily 15-minute bite-sized journeys, expert SEEK insight engine, interactive speech simulators with real-time feedback, and dynamic vocabulary boosters tailored to your field.",
+  "name": "RISE OS",
+  "description": "Executive Communication, Articulation & Speech Operating System featuring daily 15-minute workouts, AI speech arena, and expert SEEK engine in an Ink Wash aesthetic.",
   "requestFramePermissions": [
     "microphone"
   ],

@@ -70,14 +70,18 @@ export default function App() {
 
   // User Profile with localStorage persistence & safe merging
   const [userProfile, setUserProfile] = useState<UserProfile>(() => {
-    const saved = localStorage.getItem('riseguide_user_profile');
+    const saved = localStorage.getItem('riseos_user_profile') || localStorage.getItem('riseguide_user_profile');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
         return {
           ...INITIAL_PROFILE,
           ...parsed,
-          readerPreferences: parsed.readerPreferences || DEFAULT_READER_PREFERENCES,
+          readerPreferences: {
+            ...DEFAULT_READER_PREFERENCES,
+            ...(parsed.readerPreferences || {}),
+            theme: 'light' // Default to light Ink Wash aesthetic
+          },
           auth: parsed.auth || INITIAL_PROFILE.auth,
           reminderConfig: parsed.reminderConfig || INITIAL_PROFILE.reminderConfig,
           recentFeedbackList: parsed.recentFeedbackList || INITIAL_PROFILE.recentFeedbackList,
@@ -146,7 +150,7 @@ export default function App() {
 
   // Persist Profile Changes
   useEffect(() => {
-    localStorage.setItem('riseguide_user_profile', JSON.stringify(userProfile));
+    localStorage.setItem('riseos_user_profile', JSON.stringify(userProfile));
   }, [userProfile]);
 
   // Check today completion status
